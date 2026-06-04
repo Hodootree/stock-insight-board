@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: stock-insight-board
+    runtime: node
+    rootDir: outputs/stock-insight
+    plan: free
+    buildCommand: ""
+    startCommand: node server.mjs
+    envVars:
+      - key: NODE_VERSION
+        value: 20
