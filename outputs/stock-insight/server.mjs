@@ -4,10 +4,11 @@ import { extname, join, normalize } from "node:path";
 import { readFile } from "node:fs/promises";
 import { gunzipSync } from "node:zlib";
 import { TextDecoder } from "node:util";
+import { fileURLToPath } from "node:url";
 
 const host = process.env.HOST || "0.0.0.0";
 const port = Number(process.env.PORT || 4175);
-const rootDir = new URL(".", import.meta.url).pathname.slice(1).replace(/^([A-Za-z]):/, "$1:");
+const rootDir = fileURLToPath(new URL(".", import.meta.url));
 const rootNorm = normalize(rootDir).replace(/\\/g, "/");
 const mime = {
   ".html": "text/html; charset=utf-8",
